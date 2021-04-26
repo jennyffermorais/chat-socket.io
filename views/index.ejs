@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
    <head>
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,5 +8,11 @@
    </head>
    <body>
       <h1>Teste</h1>
+      <!-- biblioteca socket io para o frontend -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+      <script>
+         // passo aqui o servidor onde quero me conectar
+         var socket = io('http://localhost:4000');
+      </script>
    </body>
 </html>
