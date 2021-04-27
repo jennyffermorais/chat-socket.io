@@ -8,9 +8,13 @@ var io = require('socket.io')(http);
 // evento que é disparado sempre que um cliente se conecta
 // o socket é a instância, a conexão com o cliente
 io.on('connection', (socket) => {
+   socket.on('disconnect', () => {
+      console.log(` X desconectou: ${socket.id} `);
+   });
+
    // vai escutar qualquer evento com esse nome que vier desse cliente/socket
    // recebe os dados que o front enviou
-   // data = dados que o front enviou   
+   // data = dados que o front enviou
    socket.on('boasvindas', (data) => {
       console.log(data);
    });

@@ -17,6 +17,12 @@
       <script>
          // passo aqui o servidor onde quero me conectar
          var socket = io('http://localhost:4000');
+
+         // detectar a desconexão
+         socket.on('disconnect', () => {
+            console.log('desconectado');
+         });
+
          // manda uma mensagem para o servidor
          // um evento do front para o back
          socket.emit('boasvindas', { nome: 'Jennyffer' });
