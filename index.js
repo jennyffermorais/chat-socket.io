@@ -6,9 +6,21 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 // evento que é disparado sempre que um cliente se conecta
+// o socket é a instância, a conexão com o cliente
 io.on('connection', (socket) => {
-   console.log(socket);
-   console.log('ID do cliente ===>', socket.id);
+   // vai escutar qualquer evento com esse nome que vier desse cliente/socket
+   // recebe os dados que o front enviou
+   // data = dados que o front enviou   
+   socket.on('boasvindas', (data) => {
+      console.log(data);
+   });
+
+   socket.on('palavra', (data) => {
+      console.log(data);
+
+      // um evento do back para o front
+      socket.emit('resultado', ` ${data} `);
+   });
 });
 
 app.set('view engine', 'ejs');
