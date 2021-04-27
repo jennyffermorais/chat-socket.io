@@ -10,7 +10,7 @@ io.on('connection', (socket) => {
 
    // escuta o evento msg e devolve para o front os dados que recebeu
    socket.on('msg', (data) => {
-      socket.emit('showMsg', data);
+      io.emit('showMsg', data); // para mostrar a msg para todos os clientes
       console.log(data);
    });
 });
