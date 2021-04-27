@@ -4,42 +4,22 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
+      <title>Chat da Jenny</title>
    </head>
    <body>
-      <input type="text" id="palavra" />
-      <button onclick="enviar()">Enviar</button>
-      <hr />
-      <p id="resultado"></p>
+      <h1>Chat da Jenny</h1>
+      <div id="chat"></div>
+      <br />
+      <input type="text" id="msg" /> <br />
+      <input type="text" id="username" placeholder="Seu nome de usuário" />
+      <button>Enviar</button>
 
-      <!-- biblioteca socket io para o frontend -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
       <script>
-         // passo aqui o servidor onde quero me conectar
          var socket = io('http://localhost:4000');
-
-         // detectar a desconexão
          socket.on('disconnect', () => {
-            console.log('desconectado');
+            console.log('Desconectado');
          });
-
-         // manda uma mensagem para o servidor
-         // um evento do front para o back
-         socket.emit('boasvindas', { nome: 'Jennyffer' });
-
-         // evento que vem do back
-         socket.on('resultado', (data) => {
-            console.log('Evento do back ==>', data);
-
-            var p = document.getElementById('resultado');
-            p.innerHTML = data;
-         });
-
-         function enviar() {
-            var input = document.getElementById('palavra');
-
-            socket.emit('palavra', input.value);
-         }
       </script>
    </body>
 </html>
